@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
- * @mixin \App\Models\Product
+ * @mixin \App\Models\Item
  */
-class ProductResource extends JsonResource
+class ItemResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -19,8 +19,7 @@ class ProductResource extends JsonResource
     {
         return [
             "id" => $this->id,
-            "type" => $this->type,
-            "count" => $this->items_count
+            "serial_number" => $this->serial_number
         ];
     }
 }

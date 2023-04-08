@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -27,6 +28,7 @@ Route::middleware([])->group(function () {
 Route::middleware('auth:api')->group(function () {
     Route::get('/products', [ProductController::class, 'all']);
     Route::post('/products', [ProductController::class, 'store']);
+    Route::get('/products/{product}/items', [ItemController::class, 'all']);
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

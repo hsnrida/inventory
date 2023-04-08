@@ -14,7 +14,7 @@ class ProductController extends Controller
         /** @var \App\Models\User $user */
         $user = $request->user();
 
-        $products = $user->products()->get();
+        $products = $user->products()->withCount("items")->get();
         return response()->json([
             "products" => ProductResource::collection($products)
         ]);
