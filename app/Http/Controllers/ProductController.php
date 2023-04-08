@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\ProductResource;
 use App\Models\Product;
+use Illuminate\Contracts\Database\Query\Builder;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,9 @@ class ProductController extends Controller
         /** @var \App\Models\User $user */
         $user = $request->user();
 
-        $products = $user->products()->withCount("items")->get();
+        $products = $user->products()->withCount(["items" =>
+            fn(Builder $q) => $q->where("sold", 0)]
+        )->get();
         return response()->json([
             "products" => ProductResource::collection($products)
         ]);

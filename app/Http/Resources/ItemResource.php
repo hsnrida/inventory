@@ -19,7 +19,8 @@ class ItemResource extends JsonResource
     {
         return [
             "id" => $this->id,
-            "serial_number" => $this->serial_number
+            "serial_number" => $this->serial_number,
+            "sold" => $this->sold
         ];
     }
 }

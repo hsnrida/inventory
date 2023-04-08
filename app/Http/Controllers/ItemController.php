@@ -19,4 +19,12 @@ class ItemController extends Controller
             "items" => ItemResource::collection($product->items()->get())
         ]);
     }
+
+    public function sold(Product $product, Item $item): JsonResponse
+    {
+        $item->update([
+            "sold" => true
+        ]);
+        return response()->json();
+    }
 }
