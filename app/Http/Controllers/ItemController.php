@@ -27,4 +27,21 @@ class ItemController extends Controller
         ]);
         return response()->json();
     }
+
+    public function store(Request $request, Product $product): JsonResponse
+    {
+        $request->validate([
+            "items" => ["required", "array"]
+        ]);
+
+        $items = $request->input("items");
+        foreach ($items as $item) {
+            Item::query()->create([
+                "serial_number" => data_get($item, "serial_number"),
+                "product_id" => $product->id,
+            ]);
+        }
+
+        return response()->json();
+    }
 }
