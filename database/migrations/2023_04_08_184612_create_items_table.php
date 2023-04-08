@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger("serial_number")->unique();
+            $table->unsignedBigInteger("serial_number");
             $table->boolean("sold")->default(false);
-            $table->foreignId("product_id")->constrained("products");
+            $table->foreignId("product_id")->constrained("products")->cascadeOnDelete();
             $table->timestamps();
         });
     }

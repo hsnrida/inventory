@@ -34,4 +34,10 @@ class ProductController extends Controller
            "product" => ProductResource::make($product)
        ]);
     }
+
+    public function delete(Product $product): JsonResponse
+    {
+        $product->delete();
+        return response()->json();
+    }
 }

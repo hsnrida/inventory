@@ -44,4 +44,10 @@ class ItemController extends Controller
 
         return response()->json();
     }
+
+    public function delete(Product $product, Item $item): JsonResponse
+    {
+        $item->delete();
+        return response()->json();
+    }
 }
