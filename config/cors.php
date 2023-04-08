@@ -21,7 +21,7 @@ return [
 
     'allowed_origins' => [
         'http://localhost:3000',
-        'http://inventory.test',
+        'http://inventory.test:8000'
     ],
 
     'allowed_origins_patterns' => [],
@@ -32,5 +32,5 @@ return [
 
     'max_age' => 0,
 
-    'supports_credentials' => true,
+    'supports_credentials' => false,
 ];

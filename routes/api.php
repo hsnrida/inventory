@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['middleware' => 'api'], function ($router) {
+Route::middleware([])->group(function () {
     Route::post('/login', [AuthController::class, 'login']);
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/logout', [AuthController::class, 'logout']);
@@ -24,7 +24,7 @@ Route::group(['middleware' => 'api'], function ($router) {
     Route::get('/user-profile', [AuthController::class, 'userProfile']);
 });
 
-Route::middleware(['auth:api'])->group(function () {
+Route::middleware('auth:api')->group(function () {
     Route::get('/home', [HomeController::class, 'index']);
 });
 
