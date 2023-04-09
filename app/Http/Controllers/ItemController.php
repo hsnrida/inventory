@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreItemRequest;
-use App\Http\Requests\UpdateItemRequest;
 use App\Http\Resources\ItemResource;
-use App\Http\Resources\ProductResource;
 use App\Models\Item;
 use App\Models\Product;
 use Illuminate\Http\JsonResponse;
