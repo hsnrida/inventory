@@ -35,6 +35,17 @@ class ProductController extends Controller
        ]);
     }
 
+    public function edit(Request $request, Product $product): JsonResponse
+    {
+        $request->validate([
+            "type" => ["required", "string"]
+        ]);
+        $product->update([
+            "type" => $request->input("type")
+        ]);
+        return response()->json();
+    }
+
     public function delete(Product $product): JsonResponse
     {
         $product->delete();

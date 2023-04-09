@@ -25,14 +25,15 @@ Route::middleware([])->group(function () {
     Route::get('/user-profile', [AuthController::class, 'userProfile']);
 });
 
-Route::middleware('auth:api')->group(function () {
-    Route::get('/products', [ProductController::class, 'all']);
-    Route::post('/products', [ProductController::class, 'store']);
-    Route::delete('/products/{product}', [ProductController::class, 'delete']);
-    Route::get('/products/{product}/items', [ItemController::class, 'all']);
-    Route::post('/products/{product}/items', [ItemController::class, 'store']);
-    Route::put('/products/{product}/items/{item}/sold', [ItemController::class, 'sold']);
-    Route::delete('/products/{product}/items/{item}', [ItemController::class, 'delete']);
+Route::middleware('auth:api')->prefix("products")->group(function () {
+    Route::get('', [ProductController::class, 'all']);
+    Route::post('', [ProductController::class, 'store']);
+    Route::put('{product}', [ProductController::class, 'edit']);
+    Route::delete('{product}', [ProductController::class, 'delete']);
+    Route::get('{product}/items', [ItemController::class, 'all']);
+    Route::post('{product}/items', [ItemController::class, 'store']);
+    Route::put('{product}/items/{item}/sold', [ItemController::class, 'sold']);
+    Route::delete('{product}/items/{item}', [ItemController::class, 'delete']);
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
