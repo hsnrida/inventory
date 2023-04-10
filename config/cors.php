@@ -21,6 +21,7 @@ return [
 
     'allowed_origins' => [
         'http://localhost:3000',
+        'http://localhost:8000',
         'http://inventory.test:8000'
     ],
 
