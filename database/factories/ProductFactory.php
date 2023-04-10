@@ -18,6 +18,7 @@ class ProductFactory extends Factory
     {
         return [
             "type" => $this->faker->name,
+            "description" => $this->faker->realText,
             "user_id" => 1,
         ];
     }

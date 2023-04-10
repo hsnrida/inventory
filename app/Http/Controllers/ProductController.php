@@ -25,9 +25,15 @@ class ProductController extends Controller
 
     public function store(Request $request): JsonResponse
     {
+        $request->validate([
+            "type" => ["required", "string"],
+            "description" => ["nullable", "string"]
+        ]);
+
         $product = Product::query()->create([
             "type" => $request->input("type"),
             "user_id" => $request->user()->id,
+            "description" => $request->input("description", null)
         ]);
 
         return response()->json([
@@ -38,11 +44,13 @@ class ProductController extends Controller
     public function edit(Request $request, Product $product): JsonResponse
     {
         $request->validate([
-            "type" => ["required", "string"]
+            "type" => ["required", "string"],
+            "description" => ["nullable", "string"]
         ]);
 
         $product->update([
-            "type" => $request->input("type")
+            "type" => $request->input("type"),
+            "description" => $request->input("description", null),
         ]);
         return response()->json();
     }
