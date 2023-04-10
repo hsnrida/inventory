@@ -28,7 +28,8 @@ class ItemController extends Controller
     public function store(Request $request, Product $product): JsonResponse
     {
         $request->validate([
-            "items" => ["required", "array"]
+            "items" => ["required", "array"],
+            "items.*.serial_number" => ["required", "numeric"],
         ]);
 
         $items = $request->input("items");

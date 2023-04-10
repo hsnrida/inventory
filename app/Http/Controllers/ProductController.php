@@ -40,6 +40,7 @@ class ProductController extends Controller
         $request->validate([
             "type" => ["required", "string"]
         ]);
+
         $product->update([
             "type" => $request->input("type")
         ]);
